@@ -26,6 +26,9 @@ let syntaxValidator = (toCheck) => {
       openers.push(char);
     }
   });
+  console.log(toCheckArray)
+  let test = toCheckArray.pop();
+  console.log(test);
   return (invalid || openers.length > 0) ? false : true;
 };
 
@@ -45,8 +48,11 @@ let findPrimes = (start, end) => {
   for (let i = start; i <= end; i++) {
     // find if i is prime or not
     let isPrime = true;
+    // Catches 1 and negative numbers
     if (i > 1) {
+      // Divides index by every number between 2 and the index
       for (let j = 2; j < i; j++) {
+        console.log(i)
         if (i % j === 0) {
           isPrime = false;
           break;
@@ -62,4 +68,23 @@ let findPrimes = (start, end) => {
   return rangePrimes;
 };
 
-console.log(findPrimes(4, 20)) // should return [5, 7, 11]
+console.log(findPrimes(2, 20)) // should return [5, 7, 11]
+
+
+
+// We list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. 
+// The sum of these multiples is 23.  Find the sum of all the multiples of 3 or 5 below 1000.
+
+let findMultiples = (range) => {
+  let sum = 0;
+  for (let i = 0; i < range; i+= 3) {
+    sum+= i;
+  }
+  for (let j = 5; j < range; j+= 5) {
+    sum+= j;
+  }
+  return sum;
+};
+
+
+console.log(findMultiples(1000))
